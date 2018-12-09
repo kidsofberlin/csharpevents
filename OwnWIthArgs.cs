@@ -16,7 +16,7 @@ namespace ConsoleApp1
             c.eventHandler += (o,i) => Console.WriteLine("lambda");
             c.eventHandler += Fired;
 
-            c.fireAway();
+            c.FireAway();
 
             Console.ReadKey();
         }
@@ -24,7 +24,7 @@ namespace ConsoleApp1
 
         private void Fired(Object sender, MyArgs args)
         {
-            Console.WriteLine("Fired: " + args.MyProperty);
+            Console.WriteLine("Fired: " + args.SomeProperty);
         }
     }
 
@@ -33,11 +33,11 @@ namespace ConsoleApp1
     {
         public EventHandler<MyArgs> eventHandler;
 
-        public void fireAway()
+        public void FireAway()
         {
 
             var myargs = new MyArgs();
-            myargs.MyProperty = 10;
+            myargs.SomeProperty = 10;
             eventHandler?.Invoke(this, myargs);
         }
     }
@@ -45,7 +45,7 @@ namespace ConsoleApp1
     public class MyArgs
     {
 
-        public int MyProperty { get; set; }
+        public int SomeProperty { get; set; }
 
     }
 }
